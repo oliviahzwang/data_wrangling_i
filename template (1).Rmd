@@ -3,4 +3,43 @@ title: "Data Import"
 output: github_document
 ---
 
+```{r, echo = FALSE}
+library(tidyverse)
+```
+
 # Data Import: CSVs
+
+Let's import data using the `readr` package. We want to use relative paths (meaning starting from the R project) to indicate where existing files are. We can also send this relative path to others with similar folder names, and they will be able to use it as well. 
+```{r}
+litters_df = read.csv("data_import_examples/FAS_litters.csv")
+litters_df = janitor::clean_names(litters_df)
+```
+
+The `janitor` package exists on my computer. We are saying in the `janitor` package, use the `clean_names` function. `Janitor` has a bunch of other functions that we don't need. 
+
+Next, let us look at the data 
+```{r}
+litters_df
+
+head(litters_df)
+tail(litters_df)
+```
+
+```{r, eval = FALSE}
+view(litters_df)
+```
+
+```{r}
+skimr::skim(litters_df)
+```
+
+We can explore `read_csv` options by inputting `?read_csv` in the console below. 
+We are able to change set values to N/A in the dataset, depending on how they're set in the existing data set.You can also skip the first few lines of the dataset, since if say, there's irrelevant information.  
+```{r}
+read_csv( na = c("", "NA"))
+read_csv(skip = 0)
+```
+
+# Other File Formats
+
+
