@@ -53,9 +53,9 @@ pulse_df = read_sas("data_import_examples/public_pulse_data.sas7bdat")
 ```
 
 # Data Export
-Suppose you read in this LotR dataframe, and you want to save it somewhere (intermediate dataset, for example).
-```{r}
-write_csv(lotr_words_df, file = "results/lotr_words_df.csv")
-```
+Suppose you read in this LotR dataframe, and you want to save it somewhere (intermediate dataset, for example).The code is supposed to be `write_csv(lotr_words_df, file = "results/lotr_words_df.csv")` but it's not working for some reason. 
+
+# GitIgnore
+You can use gitignore to ignore a directory or file before you commit and push. You should also commit and push the actual gitignore file. This is useful for when you absolutely do not want to upload a dataset to git, e.g. if a dataset has patient data, or if it's simply too big. 
 
 
