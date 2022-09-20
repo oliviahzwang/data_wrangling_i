@@ -5,6 +5,8 @@ output: github_document
 
 ```{r, echo = FALSE}
 library(tidyverse)
+library(readxl)
+library(haven)
 ```
 
 # Data Import: CSVs
@@ -35,11 +37,25 @@ skimr::skim(litters_df)
 
 We can explore `read_csv` options by inputting `?read_csv` in the console below. 
 We are able to change set values to N/A in the dataset, depending on how they're set in the existing data set.You can also skip the first few lines of the dataset, since if say, there's irrelevant information.  
-```{r}
-read_csv( na = c("", "NA"))
-read_csv(skip = 0)
-```
 
 # Other File Formats
+
+We need to read in an Excel spreadsheet. We used to need to export to CVS, re-import, etc. We can now we can just use the `readxl` package. Make sure you uplaod the package first (see above). Side note: ignore the LotR backup excel spreadsheet when committing - it will disappear after you close the file. 
+```{r}
+read_xlsx("data_import_examples/mlb11.xlsx")
+```
+
+# Still more formats...
+
+Read in a SAS dataset. Load in `Haven` library first!
+```{r}
+pulse_df = read_sas("data_import_examples/public_pulse_data.sas7bdat")
+```
+
+# Data Export
+Suppose you read in this LotR dataframe, and you want to save it somewhere (intermediate dataset, for example).
+```{r}
+write_csv(lotr_words_df, file = "results/lotr_words_df.csv")
+```
 
 
